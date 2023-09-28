@@ -1,10 +1,38 @@
-function App() {
+import Link from "next/link";
+
+function Home() {
   return (
-    <>
-      <h1 className="text-3xl font-bold">Home Page</h1>
-      <button className="btn btn-accent bg-red">Hello</button>
-    </>
+    <section>
+      <b>Home page</b>
+      <ul>
+        <li>
+          <Link className="link link-accent" href="/blog">
+            Blog
+          </Link>
+        </li>
+        <li>
+          <Link className="link link-accent" href="/about">
+            About
+          </Link>
+        </li>
+        <li>
+          <Link className="link link-accent" href="/profile">
+            Profile
+          </Link>
+        </li>
+        <li>
+          <Link className="link link-accent" href="/users">
+            Users
+          </Link>
+        </li>
+        <li>
+          <Link className="link link-accent" href="/posts">
+            Posts
+          </Link>
+        </li>
+      </ul>
+    </section>
   );
 }
 
-export default App;
+export default Home;
