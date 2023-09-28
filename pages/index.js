@@ -1,9 +1,10 @@
-function HomePage() {
+function App() {
   return (
     <>
-      <h1>Home Page</h1>
+      <h1 className="text-3xl font-bold">Home Page</h1>
+      <button className="btn btn-accent bg-red">Hello</button>
     </>
   );
 }
 
-export default HomePage;
+export default App;
