@@ -30,6 +30,11 @@ function Home() {
             Posts
           </Link>
         </li>
+        <li>
+          <Link className="link link-accent" href="/news">
+            News
+          </Link>
+        </li>
       </ul>
     </section>
   );

@@ -18,7 +18,7 @@ function PostDetail({ data }) {
 export default PostDetail;
 
 export async function getStaticPaths() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const response = await fetch("http://localhost:4000/posts");
   const data = await response.json();
 
   return {
@@ -28,7 +28,7 @@ export async function getStaticPaths() {
       { params: { id: "3" } },
       { params: { id: "4" } },
     ],
-    fallback: "blocking",
+    fallback: true,
   };
   // const paths = data.map((item) => {
   //   return { params: { id: `${item.id}` } };
@@ -41,9 +41,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(ctx) {
   const { params } = ctx;
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params?.id}`
-  );
+  const response = await fetch(`http://localhost:4000/posts/${params?.id}`);
   const data = await response.json();
   if (!data?.id)
     return {

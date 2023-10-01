@@ -17,13 +17,15 @@ function PostList({ data }) {
 
 export default PostList;
 
-export const getServerSideProps = async (ctx) => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+export const getStaticProps = async (ctx) => {
+  const response = await fetch("http://localhost:4000/posts");
+  console.log("generating list");
   const data = await response.json();
 
   return {
     props: {
       data: data,
     },
+    revalidate: 10,
   };
 };
