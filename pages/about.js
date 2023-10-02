@@ -1,7 +1,9 @@
 import React from "react";
-import Footer from "@layouts/footer";
-import Header from "@layouts/header";
+import Footer from "components/layouts/footer";
+import Header from "components/layouts/header";
 import Head from "next/head";
+import { useState, useEffect } from "react";
+import { getSession, signIn } from "next-auth/react";
 
 function About() {
   return (
@@ -17,13 +19,18 @@ function About() {
 export default About;
 
 About.getLayout = function PageLayout(page) {
-  return (
-    <>
-      <main className="bg-primary-content min-h-screen  text-2xl">
-        <Header />
-        <div className="p-5">{page}</div>
-        <Footer />
-      </main>
-    </>
-  );
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const securePage = async () => {
+      const session = await getSession();
+      if (!session) {
+        signIn();
+      } else {
+        setLoading(false);
+      }
+    };
+    securePage();
+  }, []);
+  return <>{!loading && <div className="p-5">123 {page}</div>}</>;
 };

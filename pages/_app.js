@@ -1,13 +1,11 @@
 import "styles/globals.scss";
 import Head from "next/head";
 import Header from "components/layouts/header";
+import { SessionProvider } from "next-auth/react";
 
 function App({ Component, pageProps }) {
-  if (Component.getLayout) {
-    return Component.getLayout(<Component {...pageProps} />);
-  }
   return (
-    <>
+    <SessionProvider session={pageProps.session}>
       <Head>
         <title>Overview page</title>
       </Head>
@@ -17,7 +15,7 @@ function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </div>
       </main>
-    </>
+    </SessionProvider>
   );
 }
 
